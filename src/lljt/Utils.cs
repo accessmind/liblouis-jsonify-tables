@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace lljt;
+﻿namespace lljt;
 
 internal class Utils {
     public static string? ExtractFieldValueFromLine(string? line, string field) {
@@ -12,12 +6,12 @@ internal class Utils {
             return null;
         }
 
-        var parts = line?.Remove(0, 2).Split(": ");
+        var parts = line?.Remove(0, 2).Split(":");
 
         if (parts[0] != field) {
             return null;
         }
 
-        return parts[1];
+        return parts[1]?.Trim();
     }
 }

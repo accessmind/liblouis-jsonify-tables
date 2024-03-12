@@ -25,7 +25,7 @@ internal class Program {
         var files = from file in Directory.GetFiles(tablesFolder)
                     where !excludedExtensions.Contains(Path.GetExtension(file))
                     select file;
-        var tablesToSerialize = new List<TranslationTable>();
+        var allTables = new List<TranslationTable>();
 
         foreach (var file in files) {
             var table = new TranslationTable();
@@ -63,13 +63,17 @@ internal class Program {
             table.DotsMode = dots;
             #endregion
 
-            tablesToSerialize.Add(table);
+            allTables.Add(table);
         }
 
+        var tablesToSerialize = from table in allTables
+                                where table.DisplayName != null
+                                && table.Language != null
+                                select table;
         var jsonFile = File.Create(outputFile);
         var options = new JsonSerializerOptions { WriteIndented = true };
-        JsonSerializer.Serialize<List<TranslationTable>>(jsonFile, tablesToSerialize, options);
-        Console.WriteLine("Done. Tables processed: {0}", tablesToSerialize.Count.ToString());
+        JsonSerializer.Serialize(jsonFile, tablesToSerialize, options);
+        Console.WriteLine("Done. Tables in total: {0}, serialized: {1}", allTables.Count.ToString(), tablesToSerialize.Count().ToString());
         return 0;
     }
 }
