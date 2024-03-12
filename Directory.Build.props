@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <BaseOutputPath>$(SolutionDir)\Bin</BaseOutputPath>
+    <BaseIntermediateOutputPath>$(SolutionDir)\Obj</BaseIntermediateOutputPath>
+  </PropertyGroup>
+</Project>
