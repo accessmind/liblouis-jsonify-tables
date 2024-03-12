@@ -7,6 +7,9 @@
     <Nullable>enable</Nullable>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+      <PublishSingleFile>true</PublishSingleFile>
+      <SelfContained>false</SelfContained>
+      <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <Product>LibLouis Jsonify Tables</Product>
     <Description>A small app to map LibLouis tables to a JSON file</Description>
     <InformationalVersion>0.1</InformationalVersion>
