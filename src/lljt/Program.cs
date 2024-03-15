@@ -70,7 +70,7 @@ internal class Program {
                                 where table.DisplayName != null
                                 && table.Language != null
                                 select table;
-        var jsonFile = File.Create(outputFile);
+        using var jsonFile = File.Create(outputFile);
         var options = new JsonSerializerOptions { WriteIndented = true };
         JsonSerializer.Serialize(jsonFile, tablesToSerialize, options);
         Console.WriteLine("Done. Tables in total: {0}, serialized: {1}", allTables.Count.ToString(), tablesToSerialize.Count().ToString());
