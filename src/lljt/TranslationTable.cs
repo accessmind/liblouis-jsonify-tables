@@ -1,4 +1,4 @@
-﻿namespace lljt;
+﻿namespace Lljt;
 
 public record struct TranslationTable(
     string FileName,

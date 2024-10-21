@@ -2,14 +2,14 @@
 using System.IO;
 using System.Text.Json;
 
-namespace lljt;
+namespace Lljt;
 
 internal class Program {
     static int Main(string[] args) {
         if (args.Length != 2) {
             Console.WriteLine("Usage: lljt <tables folder> <output JSON file name>");
 
-            return 1;
+            return ExitCode.Error;
         }
 
         string tablesFolder = args[0];
@@ -18,7 +18,7 @@ internal class Program {
         if (!Directory.Exists(tablesFolder)) {
             Console.WriteLine("Tables folder does not exist. Please provide a valid folder.");
 
-            return 1;
+            return ExitCode.Error;
         }
 
         List<String> excludedExtensions = [".dis", ".cti", ".uti"];
@@ -74,6 +74,7 @@ internal class Program {
         var options = new JsonSerializerOptions { WriteIndented = true };
         JsonSerializer.Serialize(jsonFile, tablesToSerialize, options);
         Console.WriteLine("Done. Tables in total: {0}, serialized: {1}", allTables.Count.ToString(), tablesToSerialize.Count().ToString());
-        return 0;
+
+        return ExitCode.Success;
     }
 }

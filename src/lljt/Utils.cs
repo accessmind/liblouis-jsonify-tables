@@ -1,4 +1,4 @@
-﻿namespace lljt;
+﻿namespace Lljt;
 
 internal class Utils {
     public static string? ExtractFieldValueFromLine(string? line, string field) {
